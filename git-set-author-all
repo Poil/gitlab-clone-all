@@ -22,6 +22,6 @@ class Worker(RepoProcessor):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Set author and email for all repos '
                                                  'found under the current directory')
-    parser.add_argument('author', help='Author name')
-    parser.add_argument('email', nargs='?', default='', help='Author email')
+    parser.add_argument('-a', '--author', help='Author name')
+    parser.add_argument('-e', '--email', nargs='?', default='', help='Author email')
     Worker.execute(parser)

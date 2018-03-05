@@ -56,9 +56,9 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--create', action='store_true',
                         help='Create new local branch at current commit even if there is no '
                              'corresponding remote branch')
-    parser.add_argument('branch', type=str, nargs='+', default=[],
+    parser.add_argument('-b', '--branch', type=str, nargs='+', default=[],
                         help='Local branch name. If local repo does not have this branch, '
                              'but the remote does, it is checked out instead as a new local branch')
-    parser.add_argument('remote', nargs='?', default='origin',
+    parser.add_argument('-r', '--remote', nargs='?', default='origin',
                         help='Remote to check for the branch')
     Worker.execute(parser)

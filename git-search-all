@@ -129,9 +129,9 @@ class Worker(RepoProcessor, TipHandler):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Search within all repositories')
-    parser.add_argument('what', type=str, help='What to search for: '
+    parser.add_argument('-w', '--what', type=str, help='What to search for: '
                                                'repo, branch, commit[.attr[.attr]]')
-    parser.add_argument('term', type=str, help='Search term (regex) or a keyword for repo: '
+    parser.add_argument('-t', '--term', type=str, help='Search term (regex) or a keyword for repo: '
                                                'tips, ahead (implies -l)')
     parser.add_argument('-l', '--local-only', action='store_true',
                         help='Only search within local branches')

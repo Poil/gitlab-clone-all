@@ -26,9 +26,9 @@ def _read_json(_response):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Clone ALL repositories from GitLab server '
                                                  'available to user')
-    parser.add_argument('token', type=str,
+    parser.add_argument('-t', '--token', type=str,
                         help='GitLab secret token of the user')
-    parser.add_argument('server', type=str,
+    parser.add_argument('-s', '--server', type=str,
                         help='URL of the GitLab server')
     parser.add_argument('-b', '--branch', type=str,
                         help='Checkout this branch after cloning')
@@ -74,9 +74,9 @@ if __name__ == '__main__':
         for i, p in enumerate(projects):
             pdir = p['name']
             if args.namespace:
-                ns = p['namespace']['name']
-                if args.namespace != p['namespace']['name']:
-                    print('Skipping {} from {} namespace...'.format(pdir, ns))
+                full_ns = p['path_with_namespace'].split('/')
+                if args.namespace not in full_ns:
+                    print('Skipping {} from {} namespace...'.format(pdir, full_ns))
                     continue
             if os.path.isdir(p['name']):
                 print('Project {} already exists. Skipping...'.format(pdir))
