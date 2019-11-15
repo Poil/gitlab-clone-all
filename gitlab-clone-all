@@ -26,9 +26,9 @@ def _read_json(_response):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Clone ALL repositories from GitLab server '
                                                  'available to user')
-    parser.add_argument('token', type=str,
+    parser.add_argument('-t', '--token', type=str,
                         help='GitLab secret token of the user')
-    parser.add_argument('server', type=str,
+    parser.add_argument('-s', '--server', type=str,
                         help='URL of the GitLab server')
     parser.add_argument('-b', '--branch', type=str,
                         help='Checkout this branch after cloning')
