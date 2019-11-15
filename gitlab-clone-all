@@ -72,17 +72,17 @@ if __name__ == '__main__':
                     exit(response)
         num_projects = len(projects)
         for i, p in enumerate(projects):
-            pdir = p['name']
+            pdir = p['path_with_namespace']
             if args.namespace:
                 ns = p['namespace']['name']
-                if args.namespace != p['namespace']['name']:
+                if args.namespace not in pdir:
                     print('Skipping {} from {} namespace...'.format(pdir, ns))
                     continue
-            if os.path.isdir(p['name']):
+            if os.path.isdir(pdir):
                 print('Project {} already exists. Skipping...'.format(pdir))
                 continue
             try:
-                os.mkdir(pdir)
+                os.makedirs(pdir)
                 repo = Repo.clone_from(p['ssh_url_to_repo'], pdir)
                 origin = repo.remote('origin')
                 for f in origin.fetch():
